@@ -1,0 +1,5 @@
+
+{
+    "mongoURL":"mongodb+srv://Bahaa:just4pal@cluster0.v8dzbzl.mongodb.net/?retryWrites=true&w=majority",
+    "jwtSecret":"mysecrettoken"
+}

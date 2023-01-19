@@ -1,0 +1,68 @@
+.container{
+  background-color: #2e2e2e;
+  box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+  border-radius: 5px;
+  width: 901px;
+  margin: 10px;
+  
+}
+.header{
+  height: 100px;
+  border-bottom:1px solid #464646;
+}
+input[type="search"] {
+  width: 20%;
+  background-color: rgb(37, 37, 37);
+  border: none;
+  padding: 20px 14px;
+  height: 8px;
+  margin: 30px;
+  border-radius: 5px;
+  border: 1px solid #464646;
+  color: rgb(255, 94, 0);
+  float:right;
+}
+input[type="date"],
+
+input[type="search"]:focus {
+  outline: 1px solid rgb(9, 144, 255);
+}
+::-webkit-calendar-picker-indicator {
+  background-color: #5c5c5c;
+  width: 10px;
+  height: 10px;
+  border-radius: 50px;
+}
+.gridContainer {
+  display: grid;
+  grid-template-columns: auto auto auto auto  ;
+  padding: 10px;
+  gap: 50px 79px;
+  justify-content: flex-start;}
+
+.gallery {
+  margin: 5px;
+  width: 150px;
+}
+div.gallery:hover {
+}
+.gallery img {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 10px;
+  overflow: hidden;
+  object-fit: fill;
+}
+.desc {
+  margin: 4px;
+
+  text-align: center;
+}
+.desc a{
+  color:slateblue;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* css search */
+

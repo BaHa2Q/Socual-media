@@ -2,13 +2,15 @@ import React, { Fragment, useContext, useState } from "react";
 import styles from "./styles.module.css";
 import {  AiTwotoneStar } from "react-icons/ai";
 
-import Interactions from "./Interactions";
 import axios from "axios";
-import Setting from "./Setting";
 import Cookies from "js-cookie";
-import AuthContext from "../Config/AuthProvider";
-import LazyPostLoad from "./skeleton/LazyPostLoad";
-import MineProfile from "./Mini-Profile/indexs";
+import moment from "moment/moment";
+import { useParams } from "react-router-dom";
+import Interactions from "../../../Posts/Interactions";
+import MineProfile from "../../../Posts/Mini-Profile/indexs";
+import Setting from "../../../Posts/Setting";
+import LazyPostLoad from "../../../Posts/skeleton/LazyPostLoad";
+import AuthContext from "../../../Config/AuthProvider";
 import { DateTime } from "luxon";
 export const TextPost = ({ text }) => {
   const [seeMore, setSeeMore] = useState(false);
@@ -42,10 +44,13 @@ export const TextPost = ({ text }) => {
   );
 };
 
-const Posts = () => {
+const MyPost = () => {
   const [userAbout, setUserAbout] = useState("");
   const tokencookie = Cookies.get("authorization");
-  const { posts, user, loading } = useContext(AuthContext);
+  const {user, loading } = useContext(AuthContext);
+  const { username } = useParams();
+  const { profiles } = useContext(AuthContext);
+  const { posts } = useContext(AuthContext);
   function handelClick(_id, users) {
     axios
       .post(
@@ -69,19 +74,35 @@ const Posts = () => {
     return <LazyPostLoad />;
   }
 
-    return (
-    <>
-
-      {posts.filter(date => date.DeleteAt === null)
+  const profile = profiles.filter(
+    (data) => data.username.replace(/ /gi, ".") === username.toString()
+  )[0];
+    const postsNew =posts.filter(date => date.DeleteAt === null).filter(data => data.userId === profile?.userId)
+  return (
+    <Fragment>
+      {/* <div className={styles.container}>
+        {posts.filter(data => data.userId === profile?.userId).map((data, index) => (
+          <div className={styles.item} key={index}>
+            <div className={styles.header} style={data.image !== undefined ? {width:"100%"}:{width:"0%"}}>
+            <p style={{    textAlign: "center",margin: 0,"padding": "39px"}}>{data.text}</p>
+            </div>
+            {data.image !== undefined &&<div className={styles.image}>
+             <img src={data.image} alt=""/>
+              </div>}
+            </div>
+        ))}
+        
+      </div> */}
+      {posts.filter(date => date.DeleteAt === null).filter(data => data.userId === profile?.userId)
         .sort(function (a, b) {
-          return new Date(b.CreateAt) - new Date(a.CreateAt);
+          return new Date(b.date) - new Date(a.date);
         })
         .map(({ text, CreateAt, image, userId, _id }, index) => (
           <div className={styles.container} key={index}>
             <p
               style={{
-                margin: "10px",
                 textAlign: "left",
+                padding:"5px",
                 color: "gray",
                 fontSize: "15px",
               }}
@@ -91,10 +112,10 @@ const Posts = () => {
               </span>
       
               <span style={{ float: "right", margin: 0, color: "lightgray" }}>
-                {DateTime.fromISO(CreateAt).toRelative()}
+              {DateTime.fromISO(CreateAt).toRelative()}
               </span>
             </p>
-            <hr style={{ border: "1px solid #464646", width: "100%" }} />
+            <hr style={{ border: "1px solid #464646", width: "90%" }} />
             <div className={styles.header}>
               <div className={styles.detils}>
                 <MineProfile
@@ -121,9 +142,9 @@ const Posts = () => {
           </div>
         ))}
       {/* {posts.length >= 20 && isFetching && <LazyPostLoad />} */}
-      {posts.length === 0 && <h1 style={{ color: "white" }}>No data</h1>}
-    </>
+      {postsNew.length === 0 && <h1 style={{ color: "white" }}>No data</h1>}
+    </Fragment>
   );
 };
 
-export default Posts;
+export default MyPost;

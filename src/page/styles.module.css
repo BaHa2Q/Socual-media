@@ -1,0 +1,27 @@
+.body{
+
+  background:black
+}
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@500&display=swap');
+p,h1,h2,h3,h4,h5,h6,textarea,li,ul{
+  font-family: 'Cairo', sans-serif;
+}
+.gridContainer {
+  display: grid;
+  gap: 10px;
+  padding: 10px;
+  
+}
+.gridItem {
+  text-align: center;
+  font-size: 20px;
+}
+.Header {
+  grid-column: 1 / span 3;
+}
+.Post{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 61px;
+}

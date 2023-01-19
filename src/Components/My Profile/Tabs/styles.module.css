@@ -1,0 +1,30 @@
+.nav{
+  display: flex;
+  flex-wrap: nowrap;
+  width: 900px;
+}
+.item{ 
+  padding: 6px 14px;
+  font-size: 20px;
+  margin: 5px 4px;
+  text-align: center;
+  color: rgb(124, 124, 124);
+  /* box-shadow: rgb(49 49 49) 0px 6px 12px -2px, rgb(49 49 49) 0px 3px 7px -3px; */
+  transition: background-color 0.4s;
+  cursor: pointer;
+}
+.item:hover{
+  border-bottom: 5px solid rgb(104, 104, 104);
+}
+.item p{
+margin: 0;
+}
+.active:hover{
+  border-bottom: 5px solid slateblue;
+}
+.active{
+background-color : rgb(73, 73, 73);
+box-shadow: none;
+border-bottom: 5px solid slateblue;
+color: slateblue;
+}

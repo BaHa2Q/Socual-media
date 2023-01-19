@@ -1,0 +1,98 @@
+.wrapper{
+  background-color: #2e2e2e;
+  width: 268px;
+  top: 131px;
+  right: 242px;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 8px 8px 10px rgb(0 0 0 / 6%);
+  border: 2px solid #4848489e;
+  animation: mymove 0.6s ;
+  opacity: 1;
+}
+@keyframes mymove {
+  0%   {opacity: 0;}
+
+}
+.username{
+   margin: 0px;
+ font-weight: bold;
+ text-decoration:none;
+color:SlateBlue
+}
+.username:hover{
+    text-decoration:underline;
+    cursor: pointer;
+}
+.imgProfile{
+  border-radius: 50%;
+  position: absolute;
+  left: 159px;
+  box-shadow: rgb(0 0 0 / 16%) 0px 3px 6px, rgb(0 0 0 / 23%) 0px 3px 6px;
+  top: 39px;
+  width: 79px;
+  height: 79px;
+}
+.header{
+  margin: 0;
+  margin-left: 11px;
+  font-size: 17px;
+  font-weight: 400;
+  color: #66f2ff;
+}
+.titles{
+    margin: 10px;
+}
+
+.t1{
+  margin: 0;
+  color: #90a9fa;
+
+}
+.t1:hover{
+  text-decoration: underline;
+  color: #5079ff;
+
+}
+.footer{
+  display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+/* CSS */
+.btnProfil {
+  align-items: center;
+  appearance: button;
+  background-color: #0276FF;
+  border-radius: 8px;
+  border-style: none;
+  box-shadow: rgba(255, 255, 255, 0.26) 0 1px 2px inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  font-family: "RM Neue",sans-serif;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  padding: 10px 91px;
+  text-align: center;
+  text-transform: none;
+  transition: color .13s ease-in-out,background .13s ease-in-out,opacity .13s ease-in-out,box-shadow .13s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.btnProfil:active {
+  background-color: #006AE8;
+}
+
+.btnProfil:hover {
+  background-color: #1C84FF;
+}
+

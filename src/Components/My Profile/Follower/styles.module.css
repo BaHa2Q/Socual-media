@@ -1,0 +1,17 @@
+
+  .btnMethod{
+   
+    border: none;
+    color: white;
+    padding: 9px 32px;
+    font-size: 21px;
+    cursor: pointer;
+    border-radius: 6px;
+    margin: 7px;
+  }
+  .friend{
+   background-color: #945cf7 
+  }
+  .unfriend{
+   background-color: rgb(126 126 126)
+  }
