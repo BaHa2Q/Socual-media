@@ -73,29 +73,21 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-// import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import { Outlet } from "react-router-dom";
-import { IoMdNotifications } from "react-icons/io";
-import Badge from "@mui/material/Badge";
 import Cookies from "js-cookie";
-import jwtDecode from "jwt-decode";
-import axios from "axios";
 import AuthContextAccount from "../Config/AuthProviderAccount";
 import Menu from "../hook/Menu/Menu";
-import { BiLogOut } from 'react-icons/bi';
 import Notification from "./Notification";
 import Conten from "../hook/Menu/Conten";
 function ResponsiveAppBar() {
   const { profiles } = useContext(AuthContextAccount);
-  const auth = Cookies.get("authorization");
-  const [notification, setNotification] = useState([]);
-  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+  const settings = ["Profile", "Account", "Dashboard", "Logout"];
   const pages = ["Products", "Pricing", "Blog"];
   const onLogOut = () => {
     localStorage.removeItem("authorization");
@@ -103,34 +95,13 @@ function ResponsiveAppBar() {
     window.location.reload(false);
   };
 
-  useEffect(() => {
-    const tokencookie = Cookies.get("authorization");
-    axios
-      .get(
-        `http://localhost:5000/notification`,
 
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + tokencookie,
-          },
-        }
-      )
-      .then((res) => setNotification(res.data))
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
 
   let menuRef = useRef();
-  let notificationRef = useRef();
   useEffect(() => {
     let handler = (e) => {
       if (!menuRef.current.contains(e.target)) {
         setIsMenuOpen(false);
-      }
-      if (!notificationRef.current.contains(e.target)) {
-        setIsNotificationOpen(false);
       }
     };
 
@@ -240,8 +211,8 @@ function ResponsiveAppBar() {
                   open={isNotificationOpen}
                 />
               </div> */}
-              <Notification/>
-              <div ref={menuRef} style={{padding:"10px"}}>
+              <Notification />
+              <div ref={menuRef} style={{ padding: "10px" }}>
                 <IconButton
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
                   sx={{ p: 0 }}
@@ -254,7 +225,7 @@ function ResponsiveAppBar() {
                   open={isMenuOpen}
                   event={onLogOut}
                 /> */}
-                                <Menu
+                <Menu
                   title={"Profile"}
                   contant={settings.map((data) => {
                     return <Conten name={data} />;

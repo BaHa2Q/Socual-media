@@ -1,5 +1,4 @@
 import React from "react";
-import Conten from "./Conten";
 import styles from "./styles.module.css";
 
 const Menu = (props) => {
@@ -11,8 +10,7 @@ const Menu = (props) => {
         zIndex: 1,
         opacity: !props.open ? "0" : "1",
         transform: !props.open ? "translateY(-20px)" : "translateY(0)",
-        transition: "var(--speed) ease",
-        transition: "all ease .2s ",
+        transition: "all ease .2s  var(--speed) ease",
         visibility: !props.open ? "hidden" : "visible",
       }}>
         <div className={styles.setting}>

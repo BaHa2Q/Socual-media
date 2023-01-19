@@ -5,7 +5,6 @@ import { IoMdNotifications } from "react-icons/io";
 import Badge from "@mui/material/Badge";
 import Cookies from "js-cookie";
 import axios from "axios";
-import { BiLogOut } from "react-icons/bi";
 import Menu from "../../hook/Menu/Menu";
 import Conten from "../../hook/Menu/Conten";
 const Notification = () => {
@@ -31,7 +30,6 @@ const Notification = () => {
       });
   }, []);
 
-  let menuRef = useRef();
   let notificationRef = useRef();
   useEffect(() => {
     let handler = (e) => {
