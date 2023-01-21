@@ -67,7 +67,7 @@
 //   );
 // };
 // export default NavBar;
-import React, { useState, useEffect, useContext, useRef } from "react";
+import React, { useState, useEffect, useContext, useRef, Fragment } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -227,9 +227,10 @@ function ResponsiveAppBar() {
                 /> */}
                 <Menu
                   title={"Profile"}
-                  contant={settings.map((data) => {
-                    return <Conten name={data} />;
+                  contant={settings.map((data,index) => {
+                    return(<Fragment key={index}>  <Conten name={data} /></Fragment>);
                   })}
+      
                   open={isMenuOpen}
                   event={onLogOut}
                 />

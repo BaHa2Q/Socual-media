@@ -23,8 +23,8 @@ const Profile = () => {
     (data) => data.username.replace(/ /gi, ".") === username.toString()
   );
   const components = [
-    { id: 0, namePage: "Home", page: <MyPosts profile={profile} /> },
-    { id: 1, namePage: "Friend", page: <Friends profile={profile} /> },
+    { id: 0, namePage: "Home", page: <MyPosts profile={profile} />},
+    { id: 1, namePage: "Friend", page: <Friends profile={profile} />},
   ];
   const [Toggle, setToggleChecked] = useState(0);
   return (
@@ -38,7 +38,7 @@ const Profile = () => {
               </div>
               <div className={`${styles.gridItem} ${styles.Post}`}>
                 <div className={styles.class}>
-                  {account.user.id !== userId &&<Follower profileId={_id} />}
+                  {account.user.id !== userId &&<Follower profileId={_id} userId={userId} />}
                 </div>
               </div>
               <div className={`${styles.gridItem} ${styles.Post}`}>

@@ -4,6 +4,7 @@ import "./styles.module.css";
 
 const ViewPostInTrash = () => {
   const {trash} = useContext(AuthContextProfile)
+  console.log(trash);
   return (
     <Fragment>
           {trash.map((data,index) => 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, Fragment } from "react";
 import IconButton from "@mui/material/IconButton";
 // import Menu from "@mui/material/Menu";
 import { IoMdNotifications } from "react-icons/io";
@@ -8,8 +8,8 @@ import axios from "axios";
 import Menu from "../../hook/Menu/Menu";
 import Conten from "../../hook/Menu/Conten";
 const Notification = () => {
-  const [notification, setNotification] = useState([]);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
+  const [notification, setNotification] = useState([]);
 
   useEffect(() => {
     const tokencookie = Cookies.get("authorization");
@@ -61,8 +61,8 @@ const Notification = () => {
         <Menu
           title={"Notification"}
           open={isNotificationOpen}
-          contant={notification.map((data) => {
-            return <Conten name={data.name} />;
+          contant={notification.map((data,index) => {
+            return (<Fragment key={index}> <Conten  name={data.name} /></Fragment>);
           })}
         />
       </>
