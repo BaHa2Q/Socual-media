@@ -15,7 +15,7 @@ const Notification = () => {
     const tokencookie = Cookies.get("authorization");
     axios
       .get(
-        `http://localhost:5000/notification/friend`,
+        `http://localhost:5000/notification`,
 
         {
           headers: {
