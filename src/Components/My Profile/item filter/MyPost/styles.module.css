@@ -35,25 +35,25 @@
 
  */
  .container{
-  background-color:  #2e2e2e;;
-  width: 100%;
-  position: relative;
-
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  border-radius: 5px;
+    background-color:  #202427;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px;
+    width: 100%;
+    position: relative;
+    margin: 10px;
 }
 
 .header{
-  height: 72px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: rgb(180, 180, 180);
+    height: 72px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(180, 180, 180);
 
 
 }
 .detils{
-  display: flex;
+    display: flex;
 align-items: center;
 margin: 10px;
 }
@@ -61,29 +61,30 @@ margin: 10px;
 
 
 .contant{
-  margin: 10px;
+    margin: 10px;
 }
 .measures{
-  height: 50px;
+    height: 50px;
 }
 .photo{
-  margin: -10px;
-  
+    margin: -10px;
+    
 }
 
 span a:hover{
-  text-decoration: 1px solid underline;
+    text-decoration: 1px solid underline;
 }
 .description{
-  
+    
 }
 .measures{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top:1px solid gray;
 }
 .measures div{
-  width: 100px;
-  font-size: 30px;
-  text-align: center;
+    width: 100px;
+    font-size: 30px;
+    text-align: center;
 }

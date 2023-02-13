@@ -1,9 +1,21 @@
-import React, { Fragment, useContext } from "react";
+import axios from "axios";
+import React, { Fragment, useContext, useState } from "react";
+import { useEffect } from "react";
 import AuthContextProfile from "../../../Config/AuthProviderProfile";
 import styles from "./styles.module.css";
 
 const Liked = () => {
-  const { liked } = useContext(AuthContextProfile);
+  const { auth,apiURL } = useContext(AuthContextProfile);
+  const [liked, setLiked] = useState([]);
+
+  useEffect(() => {
+	axios.get(`${apiURL}/posts/star`, {
+		headers: {
+		  Authorization: `Bearer ${auth}`,
+		},
+	  }).then(res => setLiked(res.data));
+  }, [])
+  
   return (
     <Fragment>
       <div className={styles.container}>

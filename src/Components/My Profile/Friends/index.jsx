@@ -5,6 +5,10 @@ import AuthContextProfile from "../../Config/AuthProviderProfile";
 import styles from "./styles.module.css";
 const Friends = ({ profile }) => {
   const { friends, profiles } = useContext(AuthContextProfile);
+  const profileId = profile[0]
+
+ 
+  console.log(friends);
   const [filterUser, setFilterUser] = useState("");
   return (
     <div className={styles.container}>
@@ -51,13 +55,13 @@ const Friends = ({ profile }) => {
       </div> */}
       <div className={styles.gridContainer}>
         {friends
-          .filter((data) => data.userId === profile?.userId)
-          .map(({ friendId }, index) => (
+         .filter((data) => data.friendprofileId === profileId?._id)
+          .map(({ profileId }, index) => (
             <Fragment key={index}>
               {profiles
-                .filter((data) => data.userId === friendId)
+                .filter((data) => data._id === profileId)
                 .filter((val) => {
-                  if (filterUser == "") {
+                  if (filterUser === "") {
                     return val;
                   } else if (
                     val.name.toLowerCase().includes(filterUser.toLowerCase())
@@ -87,6 +91,7 @@ const Friends = ({ profile }) => {
                     </div>
                   </div>
                 ))}
+				
             </Fragment>
           ))}
       </div>

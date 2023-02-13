@@ -84,38 +84,46 @@ import Menu from "../hook/Menu/Menu";
 import Notification from "./Notification";
 import Conten from "../hook/Menu/Conten";
 function ResponsiveAppBar() {
-  const { profiles } = useContext(AuthContextAccount);
+	const { profiles } = useContext(AuthContextAccount);
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const settings = ["Profile", "Account", "Dashboard", "Logout"];
-  const pages = ["Products", "Pricing", "Blog"];
-  const onLogOut = () => {
-    localStorage.removeItem("authorization");
-    Cookies.remove("authorization");
-    window.location.reload(false);
-  };
-
-
-
-  let menuRef = useRef();
-  useEffect(() => {
-    let handler = (e) => {
-      if (!menuRef.current.contains(e.target)) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handler);
-
-    return () => {
-      document.removeEventListener("mousedown", handler);
-    };
-  });
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const settings = [
+	  {
+		id: 1,
+		name: "log out",
+		onLogOut: function () {
+		  localStorage.removeItem("authorization");
+		  Cookies.remove("authorization");
+		  window.location.reload(false);
+		},
+	  },
+	];
+	const pages = ["Products", "Pricing", "Blog"];
+	const onLogOut = () => {
+	  localStorage.removeItem("authorization");
+	  Cookies.remove("authorization");
+	  window.location.reload(false);
+	};
+  
+	let menuRef = useRef();
+	useEffect(() => {
+	  let handler = (e) => {
+		if (!menuRef.current.contains(e.target)) {
+		  setIsMenuOpen(false);
+		}
+	  };
+  
+	  document.addEventListener("mousedown", handler);
+  
+	  return () => {
+		document.removeEventListener("mousedown", handler);
+	  };
+	});
   return (
     <React.Fragment>
       <AppBar
         position="static"
-        style={{ position: "fixed", zIndex: 2, top: 0, background: "#3a3a3a" }}
+        style={{ position: "fixed", zIndex: 2, top: 0, background: "#1e2224" }}
       >
         <Container maxWidth="xl">
           <Toolbar disableGutters>
@@ -227,10 +235,13 @@ function ResponsiveAppBar() {
                 /> */}
                 <Menu
                   title={"Profile"}
-                  contant={settings.map((data,index) => {
-                    return(<Fragment key={index}>  <Conten name={data} /></Fragment>);
+                  contant={settings.map((data, index) => {
+                    return (
+                      <Fragment key={index}>
+                        <Conten name={data.name} event={data.onLogOut} />
+                      </Fragment>
+                    );
                   })}
-      
                   open={isMenuOpen}
                   event={onLogOut}
                 />
@@ -241,6 +252,7 @@ function ResponsiveAppBar() {
       </AppBar>
       <Outlet />
     </React.Fragment>
+  
   );
 }
 export default ResponsiveAppBar;

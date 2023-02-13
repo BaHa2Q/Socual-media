@@ -18,6 +18,7 @@ import AuthContext from "../../Config/AuthProvider";
 import Loading from "../../../Loading/Loading";
 import Edit from "./Edit";
 import jwtDecode from "jwt-decode";
+import Verification from "../../hook/Modal/Verification";
 
 // const Setting = ({ userAbout, userId }) => {
 //   const [isEditOpen, setIsEditOpen] = useState(false);
@@ -177,6 +178,8 @@ const Setting = ({ userAbout, userId }) => {
     };
   });
   const [isEditOpen, setIsEditOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+
   const [loadingBlock, setLoadingBlock] = useState(false);
   const { setPosts, posts } = useContext(AuthContext);
 
@@ -237,38 +240,18 @@ const Setting = ({ userAbout, userId }) => {
           <MdMoreVert className={styles.btnSetting} />
         </div>
 
-          <div className={styles.contanier} style={{
+        <div
+          className={styles.contanier}
+          style={{
             opacity: !isMenuOpen ? "0" : "1",
-            transform: !isMenuOpen ?  "translateY(-20px)":"translateY(0)" ,
-            transition: "var(--speed) ease",
-            transition: "all ease .2s ",
+            transform: !isMenuOpen ? "translateY(-20px)" : "translateY(0)",
+            transition: "all ease .2s  var(--speed) ease",
             visibility: !isMenuOpen ? "hidden" : "visible",
-          }}>
-            {user.user.id === userId && (
-              <div className={styles.setting}>
-                <div
-                  className={styles.item}
-                  style={{ margin: "0", padding: "1px" }}
-                >
-                  <span style={{ margin: "10px" }}>
-                    <MdDeleteForever fontSize={25} />
-                  </span>
-                  <div
-                    className={styles.label}
-                    onClick={() => {
-                      onClickDeletePost(userAbout);
-                      setIsMenuOpen(false);
-                      setLoadingBlock(true);
-                    }}
-                  >
-                    <p style={{ fontSize: "19px" }}>Delete Post</p>
-                    <p style={{ fontSize: "13px", color: "darkgray" }}>
-                      The post will be permanently deleted
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )}
+          }}
+        ><p style={{textAlign: "center",
+			fontSize: "20px",
+			margin: "10px"}}>Setting</p>
+          {user.user.id === userId && (
             <div className={styles.setting}>
               <div
                 className={styles.item}
@@ -277,44 +260,73 @@ const Setting = ({ userAbout, userId }) => {
                 <span style={{ margin: "10px" }}>
                   <MdDeleteForever fontSize={25} />
                 </span>
-                <div className={styles.label} onClick={() => { setIsMenuOpen(false)}}>
-                  <p style={{ fontSize: "19px" }}>Report</p>
+                <div
+                  className={styles.label}
+                  onClick={() => {
+                    setIsMenuOpen(false);
+					setIsDeleteOpen(true)
+                  }}
+                >
+                  <p style={{ fontSize: "19px" }}>Delete Post</p>
                   <p style={{ fontSize: "13px", color: "darkgray" }}>
                     The post will be permanently deleted
                   </p>
                 </div>
               </div>
             </div>
+          )}
+          <div className={styles.setting}>
+            <div
+              className={styles.item}
+              style={{ margin: "0", padding: "1px" }}
+            >
+              <span style={{ margin: "10px" }}>
+                <MdDeleteForever fontSize={25} />
+              </span>
+              <div
+                className={styles.label}
+                onClick={() => {
+                  setIsMenuOpen(false);
+                }}
+              >
+                <p style={{ fontSize: "19px" }}>Report</p>
+                <p style={{ fontSize: "13px", color: "darkgray" }}>
+                  The post will be permanently deleted
+                </p>
+              </div>
+            </div>
+          </div>
 
-            {user.user.id === userId && (
-              <div className={styles.setting}>
+          {user.user.id === userId && (
+            <div className={styles.setting}>
+              <div
+                className={styles.item}
+                style={{ margin: "0", padding: "1px" }}
+              >
+                <span style={{ margin: "10px" }}>
+                  <MdOutlineModeEditOutline fontSize={25} />
+                </span>
                 <div
-                  className={styles.item}
-                  style={{ margin: "0", padding: "1px" }}
+                  className={styles.label}
+                  onClick={() => {
+                    setIsEditOpen(true);
+                    setIsMenuOpen(false);
+                  }}
                 >
-                  <span style={{ margin: "10px" }}>
-                    <MdOutlineModeEditOutline fontSize={25} />
-                  </span>
-                  <div
-                    className={styles.label}
-                    onClick={() => {
-                      setIsEditOpen(true);
-                      setIsMenuOpen(false);
-                    }}
-                  >
-                    <p style={{ fontSize: "19px" }}>Edit Post</p>
-                    <p style={{ fontSize: "13px", color: "darkgray" }}>
-                      Click if You want To Editing Post
-                    </p>
-                  </div>
+                  <p style={{ fontSize: "19px" }}>Edit Post</p>
+                  <p style={{ fontSize: "13px", color: "darkgray" }}>
+                    Click if You want To Editing Post
+                  </p>
                 </div>
               </div>
-            )}
-          </div>
+            </div>
+          )}
+        </div>
       </div>
-           {isEditOpen && (
+      {isDeleteOpen && <Verification />}
+      {isEditOpen && (
         <Edit userAbout={userAbout} setIsEditOpen={setIsEditOpen} />
-       )} 
+      )}
     </div>
   );
 };

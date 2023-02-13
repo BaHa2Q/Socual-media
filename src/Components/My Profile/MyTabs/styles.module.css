@@ -1,10 +1,11 @@
 .container{
-  background-color:  #2e2e2e;;
+    background-color:  #202427;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px;
   width: 600px;
   position: relative;
   margin: 10px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  border-radius: 5px;
+
 }
 
 .header{
@@ -55,10 +56,10 @@ span a:hover{
   width: 600px;
 }
 .filterposts{
-  background-color: #2e2e2e;
+    background-color:  #202427;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px;
   margin: 10px;
-  box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
-  border-radius: 5px;
     width: 282px;
     position: sticky;
     top: 72px;

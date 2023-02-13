@@ -9,27 +9,31 @@ import Login from "../auth/login";
 const PrivateRoutes = () => {
   const [loading, setLoading] = useState(true);
   const tokencookie = Cookies.get("authorization");
-  const apiURL = "http://localhost:5000"
+  const apiURL = "http://localhost:5000";
   useEffect(() => {
- 
-      try {
-        
-        axios.get(`${apiURL}/user`, {
+    try {
+      axios
+        .get(`${apiURL}/user`, {
           headers: {
             Authorization: `Bearer ${tokencookie}`,
-            Accept: 'application/json'
+            Accept: "application/json",
           },
-        }).then(() => {return setLoading(false)}).catch(() => {return  setLoading(false)})
-      } catch (error) {
-        console.log(error);
-      }
-      setLoading(false);
-
+        })
+        .then(() => {
+          return setLoading(false);
+        })
+        .catch(() => {
+          return setLoading(false);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+    setLoading(false);
   }, [tokencookie]);
 
   if (loading) return <Loading />;
 
-  return tokencookie ? (<Home/>  ) : (<Login />);
+  return tokencookie ? <Home /> : <Login />;
 };
 
 export default PrivateRoutes;

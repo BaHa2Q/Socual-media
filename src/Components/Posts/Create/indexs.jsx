@@ -11,10 +11,10 @@ import jwtDecode from "jwt-decode";
 
 const CreatePost = () => {
   const { setPosts, posts } = useContext(AuthContext);
-  
+
   const [text, setText] = useState("");
   const [loadingBlockCreate, setLoadingCreate] = useState(false);
-  
+
   // const [validator,setValidator] = useState("");
   const tokencookie = Cookies.get("authorization");
   const textareaRef = useRef(null);
@@ -52,7 +52,6 @@ const CreatePost = () => {
           setTimeout(() => {
             setLoadingCreate(false);
             setPosts([...posts, response.data]);
-          
           }, 3000);
         })
 
@@ -92,12 +91,8 @@ const CreatePost = () => {
           <textarea
             ref={textareaRef}
             onChange={(e) => setText(e.target.value)}
-            placeholder={`What's on your mide,${Test.user.name}`}
-            style={
-              validatorbox
-                ? { border: `1px solid rgb(255, 87, 87)` }
-                : { border: `none` }
-            }
+            placeholder={`What's on your mide,${Test.user.name.replace(/\b[a-z]|_(?=\w)/g,(char) => char.toUpperCase())}`}
+            style={validatorbox? { border: `1px solid rgb(255, 87, 87)` }: { border: `none` }}
             value={text}
             maxLength={40788}
           />

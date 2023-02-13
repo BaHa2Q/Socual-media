@@ -1,11 +1,11 @@
 .contanier {
-    border: 1px solid #d3d3d314;
-    background: rgb(36, 36, 36);
+    background-color:  #202427;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px;
     width: 307px;
     position: absolute;
     left: 271px;
     top: 120px;
-    border-radius: 8px;
     z-index:1
   }
   .setting {
@@ -45,7 +45,7 @@
     border-radius: 5px;
   }
   .item:hover {
-    background-color: rgb(58, 58, 58);
+    background-color: #2a2e31;
   }
   .label{
     font-size: 15px;

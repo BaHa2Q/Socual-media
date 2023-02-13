@@ -87,14 +87,14 @@ const Posts = () => {
               }}
             >
               <span>
-                <AiTwotoneStar /> Favorites
+                <AiTwotoneStar color="gold" /> Favorites
               </span>
       
               <span style={{ float: "right", margin: 0, color: "lightgray" }}>
                 {DateTime.fromISO(CreateAt).toRelative()}
               </span>
             </p>
-            <hr style={{ border: "1px solid #464646", width: "100%" }} />
+            <hr style={{     border: "1px solid rgb(70 70 70 / 25%)",width: "99%"}} />
             <div className={styles.header}>
               <div className={styles.detils}>
                 <MineProfile

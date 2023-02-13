@@ -5,6 +5,7 @@ import {AiOutlineLoading3Quarters} from "react-icons/ai";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import Cookies from "js-cookie";
+import Verification from "../../../hook/Modal/Verification";
 
 const Edit = ({ userAbout ,setIsEditOpen}) => {
   const [edit ,setEdit] = useState([])
@@ -152,6 +153,8 @@ const Edit = ({ userAbout ,setIsEditOpen}) => {
           </div>
         </div>
       </div>
+	  
+
     </>
   );
 };

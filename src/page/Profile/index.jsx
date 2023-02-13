@@ -19,6 +19,7 @@ const Profile = () => {
   const { profiles } = useContext(AuthContextProfile);
   const tokencookie = Cookies.get("authorization");
   const account = jwtDecode(tokencookie)
+  const Username = username.toLowerCase() === username.toString()
   const profile = profiles.filter(
     (data) => data.username.replace(/ /gi, ".") === username.toString()
   );

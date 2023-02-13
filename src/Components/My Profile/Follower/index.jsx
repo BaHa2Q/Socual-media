@@ -8,18 +8,18 @@ import { BsFillPersonPlusFill, BsPersonCheckFill } from "react-icons/bs";
 import { AiOutlineClose } from "react-icons/ai";
 
 const Follower = ({ profileId, userId }) => {
-  const { friend, waitting } = useContext(AuthContextProfile);
+  const { friendprofile,myprofile, waitting } = useContext(AuthContextProfile);
   // const isLike = .filter(
   //   (data) => data.friendprofileId === profileId.toString()
   // );
   // const isLike2 = waitting.filter(
   //   (data) => data.friendprofileId === profileId.toString()
   // );
-  const oneFriendprofileId = friend.myprofile.filter(
+  const oneFriendprofileId = myprofile.filter(
     ({ friendprofileId }) => friendprofileId.toString() === profileId
   );
-
-  const oneprofileId = friend.friendprofile.filter(
+	console.log(oneFriendprofileId);
+  const oneprofileId = friendprofile.filter(
     ({ profileId: myprofileId }) => myprofileId.toString() === profileId
   );
 
@@ -33,12 +33,12 @@ const Follower = ({ profileId, userId }) => {
       : false
   );
   const [wait, setWait] = useState(
-    oneFriendprofileId.filter(({ request }) => request === false).length > 0
+    oneFriendprofileId.filter(({ request }) => request === null).length > 0
       ? true
       : false
   );
   const [action, setAction] = useState(
-    oneprofileId.filter(({ request }) => request === false).length > 0
+    oneprofileId.filter(({ request }) => request === null).length > 0
       ? true
       : false
   );
@@ -62,10 +62,10 @@ const Follower = ({ profileId, userId }) => {
       });
   }
 
-  function ClickForDelete(userId) {
+  function ClickForDelete(profileId) {
     axios
       .delete(
-        `http://localhost:5000/friends/reject/${userId}`,
+        `http://localhost:5000/friends/reject/${profileId}`,
 
         {
           headers: {
@@ -79,10 +79,10 @@ const Follower = ({ profileId, userId }) => {
       });
   }
   let request;
-  function ClickForAgree(userId) {
+  function ClickForAgree() {
     axios
       .put(
-        `http://localhost:5000/friends/agree/${userId}`,
+        `http://localhost:5000/order/agree`,
         { request },
         {
           headers: {

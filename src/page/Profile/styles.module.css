@@ -50,9 +50,9 @@
   }
 
 .tabs{
-  background-color: #2e2e2e;
-  box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
-  border-radius: 5px 5px 0px 0px;
+    background-color:  #202427;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px;
   top: 0;
   position: sticky;
   height: 63px;
